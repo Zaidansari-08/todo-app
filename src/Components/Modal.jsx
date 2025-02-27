@@ -1,6 +1,6 @@
 import React from "react";
 // Modal component that displays a Bootstrap-styled popup
-function Modal({ show, handleClose, title, message }) {
+function Modal({ show, handleClose, title, modalMessage }) {
   return (
     // Conditionally add Bootstrap classes: "show" makes it visible, "d-block" ensures proper display
     <div
@@ -9,7 +9,8 @@ function Modal({ show, handleClose, title, message }) {
       role="dialog"
       style={{ backgroundColor: "rgba(0,0,0,0.5)" }} // Adds a semi-transparent background
     >
-         {/* Modal dialog with centered content  */} <div className="modal-dialog modal-dialog-centered" role="document">
+         {/* Modal dialog with centered content  */}
+      <div className="modal-dialog modal-dialog-centered" role="document">
         <div className="modal-content">
           {/* Modal Header with title and close button */}
           <div className="modal-header">
@@ -19,10 +20,10 @@ function Modal({ show, handleClose, title, message }) {
           </div>
           {/* Modal Body to display the message */}
           <div className="modal-body">
-            <p>{message}</p>
+            <p>{modalMessage}</p>
           </div>
- {/* Modal Footer with a Close button */}
- <div className="modal-footer">
+          {/* Modal Footer with a Close button */}
+          <div className="modal-footer">
             <button type="button" className="btn btn-secondary" onClick={handleClose}>
               Close
             </button>
@@ -33,3 +34,13 @@ function Modal({ show, handleClose, title, message }) {
   );
 }
 export default Modal;
+
+
+
+
+
+
+
+
+
+

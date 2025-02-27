@@ -1,25 +1,14 @@
-import { useState } from 'react'
-import ToDoApp from './Components/ToDoApp'
-
-import Notes from './Components/Notes'
-
-import './App.css'
-
+import { useState } from 'react';
+import './App.css';
+import Navbar from './Components/Navbar';
+import Notes from './Components/Notes';
 function App() {
-  const [count, setCount] = useState(0)
-
+  const [searchTerm, setSearchTerm] = useState("");
   return (
-    <>
-      <div>
-      {/* <ToDoApp/> */}
-  
-      <Notes/>
-      </div>
-      
-     
-       
-    </>
+    <div>
+      <Navbar searchTerm={searchTerm} setSearchTerm={setSearchTerm}/>
+      <Notes searchTerm={searchTerm}/>
+    </div>
   )
 }
-
 export default App
