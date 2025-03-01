@@ -1,14 +1,56 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import axios from 'axios';  // ✅ Import axios
 import './App.css';
 import Navbar from './Components/Navbar';
 import Notes from './Components/Notes';
+// import Pagination from './tsf-components/mini-projects/Pagination';
+// import StudentNotes from './components/StudentNotes';
+// import NoteHookForm from './Components/NoteHookForm';
+// import HomeoPatient from './tsf-components/mini-projects/HomeoPatient';
+// import ToDoApp from './tsf-components/ToDoApp';
+
+
 function App() {
+  const [dark, setDark] = useState(false);
+  const [users, setUsers] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
+  const URL = "https://dummyjson.com/users";
+
+  useEffect(() => { 
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(URL);
+        setTimeout(() => {
+          setUsers(response.data.users);
+        }, 500);
+      } catch (error) {
+        console.log("This is my error", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  // ✅ Fix dark mode function
+  const toggleDarkMode = () => {
+    setDark(prevDark => !prevDark);
+    document.body.style.backgroundColor = dark ? "white" : "black";
+    document.body.style.color = dark ? "black" : "green";
+  };
+
   return (
-    <div>
-      <Navbar searchTerm={searchTerm} setSearchTerm={setSearchTerm}/>
+    <div className={dark ? "dark-mode" : "light-mode"}>
+      <Navbar dark={dark} toggleDarkMode={toggleDarkMode} searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+      
+      
       <Notes searchTerm={searchTerm}/>
+{/* <Pagination/> */}
+      {/* <StudentNotes/> */}
+      {/* <NoteHookForm></NoteHookForm> */}
+      {/* <HomeoPatient/> */}
+      {/* <ToDoApp/> */}
     </div>
-  )
+  );
 }
-export default App
+
+export default App;
