@@ -1,34 +1,30 @@
 import React from "react";
 import "./Navbar.css";
 
-const Navbar = ({dark, searchTerm, setSearchTerm, toggleDarkMode }) => {
-  
-
-  
-
+const Navbar = ({ dark, searchTerm, setSearchTerm, toggleDarkMode }) => {
   return (
-    <nav className="nav">
+    <nav className={`nav ${dark ? "dark" : ""}`}>
       <div className="left-nav">
-        <span>Flipkart</span>
+        <span className="logo">My Notes</span>
       </div>
 
-      {/* Search input updates searchTerm */}
       <input
         className="nav-search"
         type="text"
-        placeholder="Search..."
+        placeholder="Search notes..."
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
       />
 
       <div className="right-nav">
-        <span>Home</span>
-        <span>About</span>
-        <span>Contact Us</span>
-      {/* Dark Mode Toggle Button */}
-      <span className="darkBtn" onClick={toggleDarkMode}>
-        {dark ? "Light Mode ☀" : "Dark Mode 🌙"}
-      </span>
+        <span className="nav-item">Home</span>
+        <span className="nav-item">List of Notes</span>
+        <span className="nav-item">About Us</span>
+
+        {/* Dark Mode Toggle */}
+        <button className="dark-toggle" onClick={toggleDarkMode}>
+          {dark ? "☀ Light Mode" : "🌙 Dark Mode"}
+        </button>
       </div>
     </nav>
   );

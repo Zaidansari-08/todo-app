@@ -122,7 +122,7 @@ setConfirmAction(null)
 
   return (
     <>
-      <h1>Notes</h1>
+      <h1 style={{textAlign: "center"}}>Create Notes</h1>
       <Modal show={showModal} handleClose={handleClose} title="Notification" modalMessage={modalMessage} confirmAction={confirmAction}/>
       <div style={styles.container}>
         <input

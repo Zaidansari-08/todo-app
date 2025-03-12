@@ -1,10 +1,7 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import "bootstrap/dist/js/bootstrap.bundle.min";
-{
-  /* The following line can be included in your src/index.js or App.js file */
-}
 import 'bootstrap/dist/css/bootstrap.min.css';
+import "bootstrap/dist/js/bootstrap.bundle.min";
 import './index.css'
 import App from './App.jsx'
 
